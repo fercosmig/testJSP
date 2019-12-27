@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+/** div pai das divs mnu e frm na página index */
+.header {
+	width: 100%;
+	height: 50px;
+	background-color: #1c1a1a;
+	color: #FFFFFF
+}
+
+/** div pai das divs mnu e frm na página index */
+.all {
+	display: table;
+	width: 100%
+}
+/** div que contem o menu da página index */
+.mnu {
+	width: 10%;
+	background-color: #d3d7cf;
+	float: left
+}
+/** div que contem o iframe da página index */
+.frm {
+	width: 89%;
+	margin-left: 11%;
+	background-color: #cfcfcf
+}
+/** iframe da página index */
+.ifrm {
+	width: 100%;
+	border-style: none;
+	background-color: #cfcfcf
+}
+
+body {
+	background-color: #4f4e4e;
+	color: #ad7fa8;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px
+}
+
+.res {
+	background-color: #ad7fa8;
+	color: #4f4e4e
+}
+
+/* unvisited link */
+a:link {
+	color: #5c3566;
+	font-size: 12px
+}
+
+/* visited link */
+a:visited {
+	color: #5c3566;
+	font-size: 12px
+}
+
+/* mouse over link */
+a:hover {
+	color: #5c3566;
+	font-size: 12px
+}
+
+/* selected link */
+a:active {
+	color: #5c3566;
+	font-size: 12px
+}
+
+table {
+	border-collapse: collapse
+}
+
+table, tr, th, td {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #FFFFFF
+}
+
+th {
+	font-weight: bolder;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px
+}
+
+/** Utilizado em td */
+.tac {
+	text-align: center
+}
+
+.w200 {
+	width: 200px
+}
+
+.pad10 {
+	padding: 10px
+}
+
+.header {
+	width: 100%;
+	height: 60px;
+	background-color: #1c1a1a;
+	color: #FFFFFF
+}
