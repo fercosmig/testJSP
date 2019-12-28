@@ -1,19 +1,38 @@
 /**
- * 
+ CREATE TABLE tbmegasena(
+	concurso BIGINT NOT NULL AUTO_INCREMENT,
+	data_sorteio DATE NOT NULL,
+	d1 INT NOT NULL,
+	d2 INT NOT NULL,
+	d3 INT NOT NULL,
+	d4 INT NOT NULL,
+	d5 INT NOT NULL,
+	d6 INT NOT NULL,
+	PRIMARY KEY (concurso)
+);
  */
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * @author fercosmig
- *
+ * @author Fernando Costa Migliorini
+ * @email fercosmig@gmail.com
+ * @since Dec 23, 2019
+ * @file model.MegaSena.java
  */
-public class MegaSena {
+public class MegaSena implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(MegaSena.class.getName());
+
+	/**
+	 * Attributes
+	 */
 	private Integer concurso;
 	private Date dataSorteio;
 	private Integer dezena1;
@@ -53,6 +72,10 @@ public class MegaSena {
 		this.dezena6 = dezena6;
 	}
 
+	/**
+	 * Getters and Setters
+	 */
+	
 	/**
 	 * @return the concurso
 	 */

@@ -1,5 +1,11 @@
 /**
- * 
+CREATE TABLE tbNote
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	description VARCHAR(256) NOT NULL,
+	status BOOLEAN NOT NULL DEFAULT TRUE,
+	registrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id)
+);
  */
 package model;
 
@@ -19,7 +25,7 @@ public class Note {
 	public Note() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * @param id
 	 * @param description
@@ -35,7 +41,7 @@ public class Note {
 	}
 
 	/** Methods */
-	
+
 	/**
 	 * @return the id
 	 */

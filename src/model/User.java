@@ -1,5 +1,12 @@
 /**
- * 
+CREATE TABLE tbuser(
+	id BIGINT NOT NULL AUTO_INCREMENT,
+	login VARCHAR(30) NOT NULL,
+	password VARCHAR(40) NOT NULL,
+	status BOOLEAN NOT NULL DEFAULT TRUE,
+	registrationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id)
+);
  */
 package model;
 
