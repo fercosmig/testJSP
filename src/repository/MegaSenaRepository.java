@@ -20,7 +20,7 @@ import util.ConnectionFactory;
  * @author fercosmig
  *
  */
-public class MegaSenaRepository implements GenericRepository<MegaSena>{
+public class MegaSenaRepository implements GenericRepository<MegaSena> {
 
 	private static final Logger LOGGER = LogManager.getLogger(MegaSenaRepository.class.getName());
 
@@ -64,11 +64,11 @@ public class MegaSenaRepository implements GenericRepository<MegaSena>{
 
 		} catch (Exception e) {
 			LOGGER.error(e);
-			
+
 		} finally {
 			ConnectionFactory.closeConnection(conn, ps);
 		}
-		
+
 	}
 
 	@Override
@@ -116,13 +116,45 @@ public class MegaSenaRepository implements GenericRepository<MegaSena>{
 	@Override
 	public void update(MegaSena object) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(MegaSena object) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
+	public Integer getAmountDraw(Integer number) throws Exception {
+		LOGGER.info("Method getAmountDraw -> Number: " + number);
+
+		String[] sql = new String[6];
+		sql[0] = "SELECT COUNT('d1') as 'qtd' FROM tbmegasena WHERE d1 = ?";
+		sql[1] = "SELECT COUNT('d2') as 'qtd' FROM tbmegasena WHERE d2 = ?";
+		sql[2] = "SELECT COUNT('d3') as 'qtd' FROM tbmegasena WHERE d3 = ?";
+		sql[3] = "SELECT COUNT('d4') as 'qtd' FROM tbmegasena WHERE d4 = ?";
+		sql[4] = "SELECT COUNT('d5') as 'qtd' FROM tbmegasena WHERE d5 = ?";
+		sql[5] = "SELECT COUNT('d6') as 'qtd' FROM tbmegasena WHERE d6 = ?";
+
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Integer amount = 0;
+
+		try {
+			for (int i = 0; i < sql.length; i++) {
+				ps = conn.prepareStatement(sql[i]);
+				ps.setInt(1, number);
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					amount += rs.getInt("qtd");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			//ConnectionFactory.closeConnection(conn, ps, rs);
+		}
+		return amount;
+	}
+
 }

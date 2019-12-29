@@ -13,7 +13,7 @@
 <body>
 
 	<div class="res">
-		<h1>Cadastro de jogos da megasena</h1>
+		<h1>Cadastro de jogos da megasena - SCRIPTLET</h1>
 	</div>
 
 
@@ -64,34 +64,59 @@
 
 	<%
 		String strConcurso = request.getParameter("reqConcurso");
-			if (strConcurso != null && strConcurso != "") {
+		if (strConcurso != null && strConcurso != "") {
 
-		String pattern = "yyyy-MM-dd";
-		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+			String pattern = "yyyy-MM-dd";
+			SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 
-		int concurso = Integer.parseInt(strConcurso);
-		Date dataSorteio = sdf.parse(request.getParameter("reqDataSorteio"));
-		int d1 = Integer.parseInt(request.getParameter("reqD1"));
-		int d2 = Integer.parseInt(request.getParameter("reqD2"));
-		int d3 = Integer.parseInt(request.getParameter("reqD3"));
-		int d4 = Integer.parseInt(request.getParameter("reqD4"));
-		int d5 = Integer.parseInt(request.getParameter("reqD5"));
-		int d6 = Integer.parseInt(request.getParameter("reqD6"));
+			int concurso = Integer.parseInt(strConcurso);
+			Date dataSorteio = sdf.parse(request.getParameter("reqDataSorteio"));
+			int d1 = Integer.parseInt(request.getParameter("reqD1"));
+			int d2 = Integer.parseInt(request.getParameter("reqD2"));
+			int d3 = Integer.parseInt(request.getParameter("reqD3"));
+			int d4 = Integer.parseInt(request.getParameter("reqD4"));
+			int d5 = Integer.parseInt(request.getParameter("reqD5"));
+			int d6 = Integer.parseInt(request.getParameter("reqD6"));
 
-		MegaSena m = new MegaSena();
-		m.setConcurso(concurso);
-		m.setDataSorteio((Date) dataSorteio);
-		m.setDezena1(d1);
-		m.setDezena2(d2);
-		m.setDezena3(d3);
-		m.setDezena4(d4);
-		m.setDezena5(d5);
-		m.setDezena6(d6);
+			MegaSena m = new MegaSena();
+			m.setConcurso(concurso);
+			m.setDataSorteio((Date) dataSorteio);
+			m.setDezena1(d1);
+			m.setDezena2(d2);
+			m.setDezena3(d3);
+			m.setDezena4(d4);
+			m.setDezena5(d5);
+			m.setDezena6(d6);
 
-		MegaSenaRepository msc = new MegaSenaRepository();
-		msc.create(m);
-			}
+			MegaSenaRepository msc = new MegaSenaRepository();
+			msc.create(m);
+		}
 	%>
+
+	<%
+	MegaSenaRepository m = new MegaSenaRepository();
+	Integer n = null;
+		out.println("<table>");
+		out.println("<tr>");
+		for (int i = 0; i < 60; i++) {
+			n = m.getAmountDraw(i+1);
+			out.println("<td>");
+			out.println("Dezena: " + (i + 1) + " -> ");
+			out.println("<td>");
+			out.println(n + " vezes.");
+			out.println("<td>");
+			out.println("<td>");
+			if ((i+1) % 5 == 0) {
+				out.println("</tr><tr>");
+			}
+		}
+		out.println("</tr>");
+		out.println("</table>");
+	%>
+<br />
+<br />
+<br />
+
 	<table>
 		<tr>
 			<th>Concurso</th>
@@ -107,7 +132,7 @@
 			List<MegaSena> todos = new ArrayList<MegaSena>();
 			MegaSenaRepository mc = new MegaSenaRepository();
 			todos = mc.retrieveList();
-			
+
 			String pattern = "EEE, MMM dd, yyyy";
 			SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 			for (MegaSena ms : todos) {

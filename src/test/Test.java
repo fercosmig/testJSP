@@ -4,10 +4,6 @@
 package test;
 
 import java.util.Calendar;
-import java.util.List;
-
-import model.MegaSena;
-import repository.MegaSenaRepository;
 
 /**
  * @author fercosmig
@@ -23,6 +19,20 @@ public class Test {
 
 		Calendar c = Calendar.getInstance();
 		System.out.println(c.getTime());
-	}
 
+		int[] a = new int[10];
+		for (int i = 0; i < 10; i++) {
+			a[i] = i + 1;
+		}
+		
+		// Percorrendo um array.
+		for (int i = 0; i < a.length; i++) {
+			System.out.println(a[i]);
+		}
+
+		// Percorrendo um array de uma forma mais elegante.
+		for (int f : a) {
+			System.out.println(f);
+		}
+	}
 }

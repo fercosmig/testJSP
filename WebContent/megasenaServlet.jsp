@@ -19,7 +19,7 @@
 
 
 	<div class="res">
-		<h1>Cadastro de jogos da megasena</h1>
+		<h1>Cadastro de jogos da megasena - SERVLET</h1>
 	</div>
 
 
